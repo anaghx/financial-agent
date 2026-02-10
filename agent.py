@@ -95,9 +95,3 @@ def get_country_financial_data(country_name: str):
         "index_value": index_value
     }
 
-# ----------------------------
-# Manual Test
-# ----------------------------
-if __name__ == "__main__":
-    result = get_country_financial_data("Japan")
-    print(result)
