@@ -63,13 +63,17 @@ def get_exchange_rate(base_currency: str):
 # Stock Index Function
 # ----------------------------
 def get_index_value(symbol: str):
-    ticker = yf.Ticker(symbol)
-    data = ticker.history(period="1d")
+    try:
+        ticker = yf.Ticker(symbol)
+        data = ticker.history(period="1d")
 
-    if data.empty:
-        return "No data found"
+        if data.empty:
+            return "No data available"
 
-    return float(data["Close"].iloc[-1])
+        return float(data["Close"].iloc[-1])
+
+    except Exception:
+        return "Temporarily unavailable (rate limited)"
 
 # ----------------------------
 # Main Agent Logic
