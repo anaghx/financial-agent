@@ -34,7 +34,13 @@ if st.button("Get Details"):
                 st.info(data["stock_exchange"])
 
                 st.write("### 📊 Index Value")
-                st.write(f"{data['index_symbol']} : {data['index_value']}")
+                st.write("### 📊 Index Value")
+
+                if isinstance(data["index_value"], float):
+                    st.write(f"{data['index_symbol']} : {round(data['index_value'], 2)}")
+                else:
+                    st.warning(data["index_value"])
+
 
             # RIGHT COLUMN
             with col2:
